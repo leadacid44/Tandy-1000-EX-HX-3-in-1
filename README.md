@@ -1,6 +1,6 @@
 # Tandy 1000 EX/HX 3-in-1 Upgrade
 The Tandy 1000 EX/HX 3-in-1 Upgrade expands your 1000 EX or HX with some fantastic features!
-![The 3-in-1 Upgrade]["Pictures/3-in-1 Upgrade Top.jpg")
+![The 3-in-1 Upgrade][https://github.com/leadacid44/Tandy-1000-EX-HX-3-in-1/blob/5b8191261335be95cae084c19b3e6f7dc3e597fe/Pictures/3-in-1%20Upgrade%20Top.jpg)
 
 ## About
 The Tandy 1000 EX and HX systems originally came with just 256Kb of system memory, no serial ports, no hard drive, and a non-standard expansion slot.  These limitations have made the EX and HX somewhat unattractive for the modern vintage computer enthusiast.  While there were contemporary ways to expand the system’s capabilities, such upgrades were somewhat uncommon and are difficult to obtain today.  The Tandy 1000 EX/HX 3-in-1 Upgrade overcomes these limitations by providing the following features:
