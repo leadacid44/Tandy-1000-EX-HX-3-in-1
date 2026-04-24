@@ -1,62 +1,77 @@
-# Re‑Imaging the Compact Flash (CF) Card
+# Re-Imaging the Compact Flash (CF) Card
+
+## Table of Contents
+
+- [Explanation / Overview](#explanation--overview)
+- [Choosing a DOS Version](#dos-version)
+  - [Legal Notice](#legal-notice)
+  - [MS-DOS](#ms-dos)
+  - [FreeDOS](#freedos)
+- [Installation Methods](#installation-methods)
+  - [Physical Media](#physical-media)
+  - [SerDrive](#serdrive)
+- [Tools and Supplies](#tools-and-supplies)
+  - [CF Card](#cf-card)
+  - [Windows PC](#windows-pc)
+  - [CF Card Reader](#cf-card-reader)
+  - [Floppy Disks](#floppy-disks)
+  - [Serial](#serial)
+- [Card Prep](#card-prep)
+  - [DiskPart Method (Windows)](#diskpart-method-windows)
+  - [Disk Management Method](#disk-management-method)
+- [Quality of Life Improvements](#quality-of-life-improvements)
+
+---
 
 ## Explanation / Overview
 
 There is no true “disk image” restore process in the modern sense (as with SD cards or USB drives). Instead, rebuilding the CF card is effectively the same as installing DOS onto a new hard drive.
 
-For the purposes of the Tandy 1000 EX/HX, the CF card should be thought of as a solid‑state hard disk. Installation uses DOS tools and behaves exactly like a real hard drive install.
+For the purposes of the Tandy 1000 EX/HX, the CF card should be thought of as a solid-state hard disk. Installation uses DOS tools and behaves exactly like a real hard drive install.
 
 ---
 
-## DOS Version
+## Choosing a DOS Version
 
 ### Legal Notice
 
-I am not a lawyer. This is not legal advice. Only use MS‑DOS if you own a legitimate copy. Do not distribute copyrighted software.
+I am not a lawyer. This is not legal advice. Only use MS-DOS if you own a legitimate copy. Do not distribute copyrighted software.  I include instructions here for MS-DOS because it is my personal recommendation.  I also include FreeDOS instructions as it can be freely used without purchase.
 
-I include instructions here for MS‑DOS because it is my personal recommendation.  
-I also include FreeDOS instructions as it can be freely used without purchase.
+### MS-DOS
 
-### MS‑DOS
+I strongly recommend **MS-DOS v5.0**. Its a good blend between modernity and light resource usage.
 
-I strongly recommend **MS‑DOS v5.0**. Version 5 is a good blend between modernity and light resource usage. Versions 3 and 6 will both work, but with caveats:
+- **MS-DOS v3** – Older than necessary, no meaningful advantages
+- **MS-DOS v6** – Slower, higher memory usage, no advantages on 8086
 
-- **MS‑DOS v3**  
-  Older than necessary and has no meaningful advantages over v5.
+**Media Notes**
 
-- **MS‑DOS v6**  
-  Noticeably slower, consumes more memory, and offers no meaningful advantages over v5.
+- Physical installs: Use 360k or 720k media
+- SerDrive installs: 720k or 1.44MB images
 
-**Media notes:**
+SerDrive supports all standard floppy sizes.
 
-- Use 360k or 720k disks for physical installs, as appropriate.
-- For the `serdrive` method, 720k or 1.44MB images work well.
+I won't tell you where to get copies of DOS online, but known-good image names could be:
 
-Serdrive supports *any* standard floppy size, allowing use of 1.44MB images even on systems originally limited to 360k.
+- `Microsoft MS-DOS 5.00 (3.5-720k).7z`
+- `Microsoft MS-DOS 5.00 (5.25-360k).7z`
 
-There is no real benefit to branded (e.g. Tandy) DOS versions.
-
-Known‑good MS‑DOS 5.00 image sets commonly appear as:
-
-- `Microsoft MS‑DOS 5.00 (3.5‑720k).7z`
-- `Microsoft MS‑DOS 5.00 (5.25‑360k).7z`
-
-**Quick tip:** A 1.44MB floppy can usually be converted to 720k by covering the write‑detect hole:
+720k disks can usually be created by taping the write-detect hole on a 1.44MB floppy:
 https://www.instructables.com/Convert-a-144mb-floppy-to-720k/
 
-Formatting 720k disks on the Tandy itself and writing images using Windows XP has proven reliable. When using WinImage, prefer **Write disk** over **Format and write disk**.
+When using WinImage to write the disk images to physical disks, I sometimes had better luck by formatting the disk on the Tandy itself, and then choosing **Write disk** over **Format and write disk** on the modern PC.
 
 ### FreeDOS
 
-FreeDOS works well but does not install cleanly on 8086‑class systems without additional steps.
+FreeDOS works well but requires extra steps on 8086-class systems.
 
-- Video: https://www.youtube.com/watch?v=EOVLlMQs9f8
-- Minimal build: https://archive.org/details/free-dos-1.3-8086-minimized
+- Video walkthrough: https://www.youtube.com/watch?v=EOVLlMQs9f8
+- Minimal image set: https://archive.org/details/free-dos-1.3-8086-minimized
 
-FreeDOS images are available here:
-<URL>
+A copy of the FreeDOS disk images is also available here:
+https://github.com/leadacid44/Tandy-1000-EX-HX-3-in-1/blob/main/CompactFlash/FreeDOS%201.3%208086%20Minimized.zip
 
-The 360k images must be converted to 720k before writing:
+Since the FreeDOS images are 360k, they must be converted to 720k before writing with WinImage:
 
 1. Open image in WinImage
 2. Image → Change format → 720KB
@@ -66,25 +81,25 @@ The 360k images must be converted to 720k before writing:
 
 ## Installation Methods
 
-Two supported methods exist:
+Two supported installation paths exist:
 
 - Physical floppy disks
-- XT‑IDE serial floppy (`serdrive`)
+- XT-IDE serial floppy (SerDrive)
 
-Both work well; choice depends on hardware availability.
+Both work reliably depending on available hardware.
 
 ### Physical Media
 
 **Pros**
-- Simple and well understood
-- No host PC required during install
+- Simple and proven
+- No host PC required
 
 **Cons**
-- Requires a working floppy drive
+- Requires working floppy drive
 - Requires good media
-- 360k disks are unreliable on modern hardware
+- 360k disks are unreliable on modern PCs
 
-720k disks are generally the most reliable option.
+720k disks are the most reliable choice.
 
 ### SerDrive
 
@@ -93,11 +108,12 @@ https://minuszerodegrees.net/xtide/Serial%20drive/Serial%20drive.htm
 
 Recommended version: **v2.0.0 Beta 3 (Apr 16 2019)**
 
-- Supports Windows XP or newer
-- Requires serial port (USB adapters work)
-- Requires DB9 null‑modem cable
+Requirements:
+- Windows XP or newer
+- Serial port (USB adapters supported)
+- DB9 null-modem cable
 
-Supports all common floppy image sizes and can outperform original FDD hardware.
+Supports all common floppy sizes and may outperform original floppy hardware.
 
 ---
 
@@ -107,7 +123,7 @@ Supports all common floppy image sizes and can outperform original FDD hardware.
 
 Recommended size: **32–512 MB**
 
-Cisco router CF cards are an excellent low‑wear source.
+Cisco router CF cards are an excellent low-wear option.
 
 ### Windows PC
 
@@ -115,7 +131,7 @@ Cisco router CF cards are an excellent low‑wear source.
 
 ### CF Card Reader
 
-- CF → IDE + IDE → USB
+- CF → IDE + IDE → USB adapter
 - USB CF reader
 
 ### Floppy Disks
@@ -124,15 +140,15 @@ Cisco router CF cards are an excellent low‑wear source.
 
 ### Serial
 
-- DB9 null‑modem cable
+- DB9 null-modem cable
 - USB → serial adapter
 
 ---
 
 ## Card Prep
 
-> **WARNING**  
-> This process will permanently erase all data on the CF card. Double‑check disk selection.
+> **WARNING**
+> This process permanently erases all data on the CF card.
 
 ### DiskPart Method (Windows)
 
@@ -146,18 +162,23 @@ DISKPART> exit
 ### Disk Management Method
 
 1. Run `diskmgmt.msc`
-2. Delete existing partition
-3. Safely eject card
+2. Delete all partitions on the CF card
+3. Safely eject the card
 
-Insert the card into the Tandy and confirm detection in XT‑IDE BIOS.
+Insert the CF card into the Tandy and confirm detection in the XT-IDE BIOS.
 
 ---
 
 ## Quality of Life Improvements
 
-Optional utilities are available here:
+Optional utilities and configuration files are available here:
 <URL to be added>
 
-Extract to the CF card root after installation.
+Extract contents to the CF card root after DOS installation.
 
-Contents include DOSKEY, DOSMAX, SETBP35 (HX only), and updated AUTOEXEC.BAT / CONFIG.SYS.
+Includes:
+- DOSKEY
+- DOSMAX
+- SETBP35 (HX only)
+- AUTOEXEC.BAT
+- CONFIG.SYS
